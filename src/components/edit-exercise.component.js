@@ -3,7 +3,10 @@ import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import axios from 'axios';
 
+//edit the exercises 
+
 function EditExercise(props) {
+    //state
     const [userName, setUserName] = useState('');
     const [description, setDescription] = useState('');
     const [duration, setDuration] = useState(0);
@@ -23,7 +26,7 @@ function EditExercise(props) {
     const onChangeDate = (date) => {
         setDate(date);
     }
-
+    //submit the edits 
     const onSubmit = (e) => {
         e.preventDefault();
 
@@ -40,6 +43,8 @@ function EditExercise(props) {
 
         window.location = '/';
     }
+
+    //make the values of the text fields the values entered previously by the user 
     const addUser = () => {
         axios.get('http://localhost:7000/exercises/' + props.match.params.id)
             .then(response => {
@@ -62,6 +67,8 @@ function EditExercise(props) {
                 console.log(error);
             })
     }
+
+    //component did mount equivalent using the useEffect hook 
     useEffect(addUser, [])
 
     return (

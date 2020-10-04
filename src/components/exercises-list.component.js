@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
+//component that displays a row of exercises
 const Exercise = props => (
     <tr>
         <td>{props.exercise.username}</td>
@@ -16,6 +17,7 @@ const Exercise = props => (
         </td>
     </tr>
 )
+
 function ExercisesList() {
     const [exerciseList, setExerciseList] = useState([]);
 
@@ -35,6 +37,8 @@ function ExercisesList() {
             .then(res => console.log(res.data));
         setExerciseList(exerciseList.filter(el => el._id !== id));
     }
+
+    //the exercise list displayed 
     const exerciseListRender = () => {
         return exerciseList.map(currentexercise => {
             return <Exercise exercise={currentexercise} deleteExercise={deleteExercise} key={currentexercise._id} />;

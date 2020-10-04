@@ -24,6 +24,7 @@ function CreateExercise() {
         setDate(date);
     }
 
+    //submit the details of the exercise 
     const onSubmit = (e) => {
         e.preventDefault();
         setUserName(userName);
@@ -43,6 +44,8 @@ function CreateExercise() {
 
         window.location = '/';
     }
+
+    //load the users list to select from
     const addUser = () => {
         axios.get('http://localhost:7000/users/')
             .then(response => {
